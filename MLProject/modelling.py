@@ -12,14 +12,11 @@ from sklearn.metrics import (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Auth DagsHub
 os.environ['MLFLOW_TRACKING_USERNAME'] = 'ratihayudianurmala'
 os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
 mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow')
-
-run_id = open('MLProject/last_run_id.txt').read().strip()
-print(f"Downloading model for run: {run_id}")
-mlflow.artifacts.download_artifacts(f'runs:/{run_id}/model', dst_path='./downloaded_model')
-print('Model downloaded!')
+mlflow.set_experiment("sentiment-analysis-olist")
 
 # Load data
 X_train = sp.load_npz('olist_preprocessing/X_train.npz')
@@ -70,7 +67,6 @@ with mlflow.start_run(run_name="logistic-regression-baseline") as run:
 
     mlflow.sklearn.log_model(model, artifact_path="model")
 
-    # Simpan run ID untuk Docker build
     with open('last_run_id.txt', 'w') as f:
         f.write(run.info.run_id)
 
