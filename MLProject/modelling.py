@@ -65,7 +65,7 @@ with mlflow.start_run(run_name="logistic-regression-baseline") as run:
         f.write(report)
     mlflow.log_artifact('classification_report.txt')
 
-    mlflow.sklearn.log_model(model, "model")
+    mlflow.sklearn.log_model(model, artifact_path="model")
 
     # Simpan run ID untuk Docker build
     with open('last_run_id.txt', 'w') as f:
