@@ -1,0 +1,10 @@
+artifact_location: file:///C:/SMSML_Ratih Ayudia Nurmala/Workflow-CI/MLProject/mlruns/0/models/m-29aa11a7431b4989b6c734dfdf65429b/artifacts
+creation_timestamp: 1777380784039
+experiment_id: '0'
+last_updated_timestamp: 1777380786818
+model_id: m-29aa11a7431b4989b6c734dfdf65429b
+model_type: null
+name: model
+source_run_id: cb1fb07eb66a4e1d94ebb730d1a9122d
+status: 2
+status_message: null

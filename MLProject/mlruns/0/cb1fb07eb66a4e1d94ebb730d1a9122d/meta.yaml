@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/SMSML_Ratih Ayudia Nurmala/Workflow-CI/MLProject/mlruns/0/cb1fb07eb66a4e1d94ebb730d1a9122d/artifacts
+end_time: 1777380786834
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cb1fb07eb66a4e1d94ebb730d1a9122d
+run_name: masked-moose-681
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777380783912
+status: 3
+tags: []
+user_id: Pongo

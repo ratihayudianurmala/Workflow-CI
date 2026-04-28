@@ -14,7 +14,7 @@ import seaborn as sns
 
 # Auth DagsHub
 os.environ['MLFLOW_TRACKING_USERNAME'] = 'ratihayudianurmala'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
+os.environ['MLFLOW_TRACKING_PASSWORD'] = 'f87498647289d2fababd1f0eb614283b8f2902c6'
 mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow')
 mlflow.set_experiment("sentiment-analysis-olist")
 
@@ -65,7 +65,7 @@ with mlflow.start_run(run_name="logistic-regression-baseline") as run:
         f.write(report)
     mlflow.log_artifact('classification_report.txt')
 
-    mlflow.sklearn.log_model(model, artifact_path="model")
+    mlflow.sklearn.log_model(model, name="model")
 
     with open('last_run_id.txt', 'w') as f:
         f.write(run.info.run_id)
@@ -76,3 +76,8 @@ with mlflow.start_run(run_name="logistic-regression-baseline") as run:
     print(f"Recall    : {recall:.4f}")
     print(f"AUC-ROC   : {auc:.4f}")
     print("Model dan artefak berhasil di-log ke DagsHub!")
+
+    print(f"Active run ID: {run.info.run_id}")
+    print(f"Artifact URI: {mlflow.get_artifact_uri()}")
+    mlflow.sklearn.log_model(model, name="model")
+    print("log_model selesai!")
