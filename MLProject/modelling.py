@@ -19,10 +19,11 @@ mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_R
 mlflow.set_experiment("sentiment-analysis-olist")
 
 # Load data preprocessed
-X_train = sp.load_npz('../preprocessing/olist_preprocessing/X_train.npz')
-X_test = sp.load_npz('../preprocessing/olist_preprocessing/X_test.npz')
-y_train = pd.read_csv('../preprocessing/olist_preprocessing/y_train.csv').squeeze()
-y_test = pd.read_csv('../preprocessing/olist_preprocessing/y_test.csv').squeeze()
+# Load data preprocessed
+X_train = sp.load_npz('olist_preprocessing/X_train.npz')
+X_test = sp.load_npz('olist_preprocessing/X_test.npz')
+y_train = pd.read_csv('olist_preprocessing/y_train.csv').squeeze()
+y_test = pd.read_csv('olist_preprocessing/y_test.csv').squeeze()
 
 # Set experiment
 mlflow.set_experiment("sentiment-analysis-olist")
