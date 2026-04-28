@@ -1,6 +1,6 @@
+import os
 import mlflow
 import mlflow.sklearn
-import os
 import scipy.sparse as sp
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -12,15 +12,14 @@ from sklearn.metrics import (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-MLFLOW_TRACKING_URI = 'https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow'
-MLFLOW_TRACKING_USERNAME = 'ratihayudianurmala'
-MLFLOW_TRACKING_PASSWORD = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
-
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-
-import mlflow.tracking
-client = mlflow.tracking.MlflowClient()
-store = mlflow.tracking._tracking_service.client.TrackingServiceClient(MLFLOW_TRACKING_URI)
+# Auth DagsHub
+tracking_uri = os.environ.get(
+    'MLFLOW_TRACKING_URI',
+    'https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow'
+)
+os.environ['MLFLOW_TRACKING_USERNAME'] = 'ratihayudianurmala'
+os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('DAGSHUB_TOKEN', '')
+mlflow.set_tracking_uri(tracking_uri)
 
 # Load data preprocessed
 X_train = sp.load_npz('../preprocessing/olist_preprocessing/X_train.npz')
