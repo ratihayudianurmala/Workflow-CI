@@ -38,3 +38,13 @@ jobs:
           path: |
             MLProject/confusion_matrix.png
             MLProject/classification_report.txt
+
+      - name: Debug env
+        env:
+          MLFLOW_TRACKING_USERNAME: ratihayudianurmala
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          echo "Username: $MLFLOW_TRACKING_USERNAME"
+          echo "Password length: ${#MLFLOW_TRACKING_PASSWORD}"
+
+    
