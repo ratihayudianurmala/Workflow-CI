@@ -1,9 +1,8 @@
 import mlflow
 import mlflow.sklearn
-import dagshub
+import os
 import scipy.sparse as sp
 import pandas as pd
-import os
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score, f1_score, precision_score,
@@ -12,14 +11,9 @@ from sklearn.metrics import (
 )
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
-# Setup DagsHub
-dagshub.init(
-    repo_owner='ratihayudianurmala',
-    repo_name='Eksperimen_SML_Ran',
-    mlflow=True
-)
+# Setup MLflow ke DagsHub via env variable
+mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow')
 
 # Load data preprocessed
 X_train = sp.load_npz('../preprocessing/olist_preprocessing/X_train.npz')
