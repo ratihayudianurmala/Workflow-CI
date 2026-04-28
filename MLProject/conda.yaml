@@ -1,0 +1,15 @@
+name: sentiment-analysis-olist
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - mlflow
+    - dagshub
+    - pandas
+    - numpy
+    - scikit-learn
+    - scipy
+    - matplotlib
+    - seaborn

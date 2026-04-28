@@ -1,0 +1,41 @@
+name: Workflow CI - Sentiment Analysis
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install mlflow dagshub pandas numpy scikit-learn scipy matplotlib seaborn
+
+      - name: Run MLflow Project
+        env:
+          DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+          MLFLOW_TRACKING_USERNAME: ratihayudianurmala
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+          MLFLOW_TRACKING_URI: https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow
+        run: |
+          mlflow run MLProject --env-manager=local
+
+      - name: Upload artifacts ke GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: |
+            MLProject/confusion_matrix.png
+            MLProject/classification_report.txt

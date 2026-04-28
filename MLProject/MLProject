@@ -1,0 +1,7 @@
+name: sentiment-analysis-olist
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    command: "python modelling.py"
