@@ -57,5 +57,9 @@ jobs:
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
           RUN_ID=$(cat MLProject/last_run_id.txt)
-          mlflow models build-docker -m "runs:/$RUN_ID/model" -n "ran1609/sentiment-analysis-olist"
+          echo "Run ID: $RUN_ID"
+          mlflow models build-docker \
+            -m "runs:/$RUN_ID/model" \
+            -n "ran1609/sentiment-analysis-olist" \
+            --env-manager local
           docker push ran1609/sentiment-analysis-olist
