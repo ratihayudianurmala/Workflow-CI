@@ -12,11 +12,15 @@ from sklearn.metrics import (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Auth DagsHub
-mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow')
+MLFLOW_TRACKING_URI = 'https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow'
+MLFLOW_TRACKING_USERNAME = 'ratihayudianurmala'
+MLFLOW_TRACKING_PASSWORD = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
 
-os.environ['MLFLOW_TRACKING_USERNAME'] = os.environ.get('MLFLOW_TRACKING_USERNAME', 'ratihayudianurmala')
-os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+
+import mlflow.tracking
+client = mlflow.tracking.MlflowClient()
+store = mlflow.tracking._tracking_service.client.TrackingServiceClient(MLFLOW_TRACKING_URI)
 
 # Load data preprocessed
 X_train = sp.load_npz('../preprocessing/olist_preprocessing/X_train.npz')

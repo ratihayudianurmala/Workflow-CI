@@ -25,9 +25,7 @@ jobs:
 
       - name: Run MLflow Project
         env:
-          MLFLOW_TRACKING_URI: https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow
-          MLFLOW_TRACKING_USERNAME: ratihayudianurmala
-          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+          MLFLOW_TRACKING_URI: https://ratihayudianurmala:${{ secrets.DAGSHUB_TOKEN }}@dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow
         run: |
           mlflow run MLProject --env-manager=local
 
