@@ -13,13 +13,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Auth DagsHub
-tracking_uri = os.environ.get(
-    'MLFLOW_TRACKING_URI',
-    'https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow'
-)
 os.environ['MLFLOW_TRACKING_USERNAME'] = 'ratihayudianurmala'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('DAGSHUB_TOKEN', '')
-mlflow.set_tracking_uri(tracking_uri)
+os.environ['MLFLOW_TRACKING_PASSWORD'] = os.environ.get('MLFLOW_TRACKING_PASSWORD', '')
+mlflow.set_tracking_uri('https://dagshub.com/ratihayudianurmala/Eksperimen_SML_Ran.mlflow')
+mlflow.set_experiment("sentiment-analysis-olist")
 
 # Load data preprocessed
 X_train = sp.load_npz('../preprocessing/olist_preprocessing/X_train.npz')
